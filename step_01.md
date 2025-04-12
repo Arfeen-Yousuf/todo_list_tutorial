@@ -19,7 +19,7 @@ You'll start with a basic scaffold so that you can jump straight to the interest
 
 ### Steps:
 
-1. Create a Flutter project **todo_list** and open it with an IDE of your choice. I recommend VS Code or Android Studio.
+1. Create a Flutter project **todo_list_tutorial** and open it with an IDE of your choice. I recommend VS Code or Android Studio.
 2. Replace the contents inside main with the following code:
 
 ```bash
