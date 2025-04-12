@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_list_tutorial/providers/tasks_providers.dart';
 
 import 'screens/tasks_screen.dart';
 
@@ -16,7 +18,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: TasksScreen(),
+      home: ChangeNotifierProvider(
+        create: (context) => TasksProviders(),
+        child: TasksScreen(),
+      ),
     );
   }
 }

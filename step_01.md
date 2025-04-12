@@ -87,4 +87,6 @@ home: TasksScreen(),
 
 and import the **tasks_screen.dart** file. Now run the app to see the results.
 
-👉 [View Step 01 Code Commit](commit_link_here_later)
+👉 [View Step 01 Code Commit]
+[https://github.com/Arfeen-Yousuf/todo_list_tutorial/commit/a3396136ed26c8a6ea55bec18a4a3a053608f8bf#diff-e61eb31d013d12616f5532636a88cfa63631dda8f7829e5424e68542214d1608]
+[https://github.com/Arfeen-Yousuf/todo_list_tutorial/commit/a3396136ed26c8a6ea55bec18a4a3a053608f8bf#diff-023efa392bf3477b754965f637670adbe6bf36eb1abf2e075ff5015c815a1d78]

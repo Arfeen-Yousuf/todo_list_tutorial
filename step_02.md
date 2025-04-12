@@ -1,10 +1,10 @@
 This step adds **interactivity** and task model to our app.
 
-**Steps:**
+### Steps:
 
 **1)** Create a file **lib/screens/tasks_screen.dart** and place the following contents:
 
-```bash
+```dart
 import 'package:flutter/foundation.dart';
 
 @immutable
@@ -44,7 +44,7 @@ Note that the model class is marked as @immutable to prevent accidental manipula
 
 and add a field to the **\_TasksScreenState** class to hold the tasks.
 
-```bash
+```dart
 final List<TaskModel> _tasks = [
   TaskModel(id: 81, title: 'Maths Homework', description: 'Linear algebra'),
   TaskModel(id: 45, title: 'Buy grocery', isCompleted: true),
@@ -53,7 +53,7 @@ final List<TaskModel> _tasks = [
 
 **3)** Replace the body argument inside the build method with the following code
 
-```bash
+```dart
 body: SafeArea(
   child: _tasks.isEmpty
       ? Center(child: Text('No todos'))
@@ -94,7 +94,7 @@ Now the user can easily delete a task and update its completion status but can n
 
 **4)** Add a private method inside the state class to show a add/edit task dialog when a user wants to create or edit a task
 
-```bash
+```dart
 /// Shows a dialog to enter a task title and description
 Future<(String title, String description)?> _showTaskDialog({
   required bool editTask,
@@ -149,7 +149,7 @@ Future<(String title, String description)?> _showTaskDialog({
 
 **5)** Add a floating action button inside the scaffold to add a task
 
-```bash
+```dart
 body: ...,
 floatingActionButton: FloatingActionButton(
   onPressed: () async {
@@ -178,7 +178,7 @@ Now the user can add a task.
 
 **6)** Add onTap callback to out task ListTile to enable user to update a task
 
-```bash
+```dart
 ListTile(
   leading: .../
   title ...,
@@ -210,6 +210,6 @@ ListTile(
 
 ![Screenshot from 2025-04-12 18-35-14](https://github.com/user-attachments/assets/c84dc67e-cb17-4710-a72f-c6f99815c2dd)
 
-We are done with this step. In the following steps, we will add a local databse using sqflite package to persist the tasks.
+We are done with this step. In the following steps, we refactor our code and use provider to seperate our UI Logic from Business Logic
 
 👉 [View Step 02 Code Commit](commit_link_here_later)

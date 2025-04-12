@@ -1,46 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_list_tutorial/models.dart/task_model.dart';
+import 'package:todo_list_tutorial/providers/tasks_providers.dart';
 
-class TasksScreen extends StatefulWidget {
+class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
 
   @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  final List<TaskModel> _tasks = [
-    TaskModel(id: 81, title: 'Maths Homework', description: 'Linear algebra'),
-    TaskModel(id: 45, title: 'Buy grocery', isCompleted: true),
-  ];
-
-  @override
   Widget build(BuildContext context) {
+    final tasks = context.watch<TasksProviders>().tasks;
+
     return Scaffold(
       appBar: AppBar(title: const Text('Tasks')),
       body: SafeArea(
         child:
-            _tasks.isEmpty
+            tasks.isEmpty
                 ? Center(child: Text('No todos'))
                 : ListView.builder(
-                  itemCount: _tasks.length,
+                  itemCount: tasks.length,
                   itemBuilder: (context, index) {
-                    final task = _tasks[index];
+                    final task = tasks[index];
 
                     return Dismissible(
                       key: ValueKey(task.id!),
                       //When the user dismisses a task, delete it
-                      onDismissed: (direction) {
-                        setState(() => _tasks.removeAt(index));
-                      },
+                      onDismissed:
+                          (direction) => context
+                              .read<TasksProviders>()
+                              .removeTaskAt(index),
                       child: ListTile(
                         leading: Checkbox(
                           value: task.isCompleted,
                           onChanged: (value) {
                             //Update the completion status of task
-                            setState(() {
-                              _tasks[index] = task.copyWith(isCompleted: value);
-                            });
+                            context.read<TasksProviders>().upateTask(
+                              taskId: task.id!,
+                              isCompleted: value,
+                            );
                           },
                         ),
                         title: Text(task.title),
@@ -51,24 +47,24 @@ class _TasksScreenState extends State<TasksScreen> {
                                 : Text(task.description),
                         onTap: () async {
                           final result = await _showTaskDialog(
+                            context,
                             editTask: true,
                             initialTitle: task.title,
                             initialDescription: task.description,
                           );
 
                           if (result != null && result.$1.isNotEmpty) {
-                            // Add logic here to use the returned values, e.g., add to _tasks
+                            // Add logic here to use the returned values, e.g., add to tasks
                             String title = result.$1;
                             String description = result.$2;
-                            final modifiedTask = task.copyWith(
-                              title: title,
-                              description: description,
-                            );
 
-                            //Updating the task the task
-                            setState(() {
-                              _tasks[index] = modifiedTask;
-                            });
+                            if (context.mounted) {
+                              context.read<TasksProviders>().upateTask(
+                                taskId: task.id!,
+                                title: title,
+                                description: description,
+                              );
+                            }
                           }
                         },
                       ),
@@ -78,10 +74,10 @@ class _TasksScreenState extends State<TasksScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          final result = await _showTaskDialog(editTask: false);
+          final result = await _showTaskDialog(context, editTask: false);
 
           if (result != null && result.$1.isNotEmpty) {
-            // Add logic here to use the returned values, e.g., add to _tasks
+            // Add logic here to use the returned values, e.g., add to tasks
             String title = result.$1;
             String description = result.$2;
             final newTask = TaskModel(
@@ -91,7 +87,9 @@ class _TasksScreenState extends State<TasksScreen> {
             );
 
             //Adding the task
-            setState(() => _tasks.add(newTask));
+            if (context.mounted) {
+              context.read<TasksProviders>().addTask(newTask);
+            }
           }
         },
         child: Icon(Icons.add),
@@ -100,7 +98,8 @@ class _TasksScreenState extends State<TasksScreen> {
   }
 
   ///Shows a dialog to enter a task title and description
-  Future<(String title, String description)?> _showTaskDialog({
+  Future<(String title, String description)?> _showTaskDialog(
+    BuildContext context, {
     required bool editTask,
     String? initialTitle,
     String? initialDescription,
