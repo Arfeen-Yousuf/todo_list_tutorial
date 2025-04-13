@@ -4,7 +4,8 @@ import 'package:todo_list_tutorial/providers/tasks_providers.dart';
 
 import 'screens/tasks_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

@@ -8,7 +8,18 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tasks = context.watch<TasksProviders>().tasks;
+    final tasksProvider = context.watch<TasksProviders>();
+    //If the tasks are loading from the database, show a
+    //circular progress indicator
+    if (tasksProvider.loading) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Tasks')),
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    //Else show the tasks
+    final tasks = tasksProvider.tasks;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Tasks')),

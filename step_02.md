@@ -212,4 +212,4 @@ ListTile(
 
 We are done with this step. In the following steps, we refactor our code and use provider to seperate our UI Logic from Business Logic
 
-👉 [View Step 02 Code Commit](commit_link_here_later)
+👉 [View Step 02 Code Commit](https://github.com/Arfeen-Yousuf/todo_list_tutorial/commit/57b9dc349240b944f85e02c13d521112e4c93dbc)

@@ -226,4 +226,4 @@ Remember to pass the context as argument where the method is called.
 
 We are done with this step. In the following steps, we will add a local databse using sqflite package to persist the tasks.
 
-👉 [View Step 03 Code Commit](commit_link_here_later)
+👉 [View Step 03 Code Commit](https://github.com/Arfeen-Yousuf/todo_list_tutorial/commit/497a78a5820ab65c030a913cfcf21f894984c29f)
