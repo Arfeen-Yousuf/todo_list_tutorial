@@ -27,7 +27,7 @@ Create a Flutter project **todo_list_tutorial** and open it with an IDE of your 
 
 Replace the contents inside main with the following code:
 
-```bash
+```dart
 import 'package:flutter/material.dart';
 
 void main() {
@@ -63,7 +63,7 @@ The app should look like this:
 
 Create a file **lib/screens/tasks_screen.dart** and place the following contents:
 
-```bash
+```dart
 import 'package:flutter/material.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -81,7 +81,7 @@ class TasksScreen extends StatelessWidget {
 
 and then change the home in the main method from
 
-```bash
+```dart
 home: Scaffold(
   appBar: AppBar(title: Text('Tasks')),
   body: Center(child: Text('Tasks will go there')),
@@ -90,7 +90,7 @@ home: Scaffold(
 
 to
 
-```bash
+```dart
 home: TasksScreen(),
 ```
 
