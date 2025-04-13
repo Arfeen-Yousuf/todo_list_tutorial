@@ -19,8 +19,13 @@ You'll start with a basic scaffold so that you can jump straight to the interest
 
 ### Steps:
 
-1. Create a Flutter project **todo_list_tutorial** and open it with an IDE of your choice. I recommend VS Code or Android Studio.
-2. Replace the contents inside main with the following code:
+**Step 1: Create Flutter project**
+
+Create a Flutter project **todo_list_tutorial** and open it with an IDE of your choice. I recommend VS Code or Android Studio.
+
+**Step 2: Update main method**
+
+Replace the contents inside main with the following code:
 
 ```bash
 import 'package:flutter/material.dart';
@@ -48,11 +53,15 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-3. Run your app. The app should look like this:
+**Step 3: Run your app**
+
+The app should look like this:
 
 ![Screenshot from 2025-04-12 16-20-28](https://github.com/user-attachments/assets/d58b1998-f2bf-4854-9be5-53596c24cd37)
 
-4. Create a file **lib/screens/tasks_screen.dart** and place the following contents:
+**Step 4: Create TasksScreen widget**
+
+Create a file **lib/screens/tasks_screen.dart** and place the following contents:
 
 ```bash
 import 'package:flutter/material.dart';
@@ -86,6 +95,10 @@ home: TasksScreen(),
 ```
 
 and import the **tasks_screen.dart** file. Now run the app to see the results.
+
+**What's Next**
+
+We are done with the first part. In the coming part, we will add interactivity to our app.
 
 👉 [View Step 01 Code Commit]
 [https://github.com/Arfeen-Yousuf/todo_list_tutorial/commit/a3396136ed26c8a6ea55bec18a4a3a053608f8bf#diff-e61eb31d013d12616f5532636a88cfa63631dda8f7829e5424e68542214d1608]

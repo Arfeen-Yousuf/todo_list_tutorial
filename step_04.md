@@ -18,8 +18,7 @@ The sqflite package works only on mobile platforms (Android and iOS). It does no
 
 If you're using a newer version of sqflite and encounter build errors on Android you may need to update your Android NDK (Native Development Kit). Check the version requirements on the [sqflite changelog](https://pub.dev/packages/sqflite/changelog) and ensure your local.properties file points to a valid NDK path. You will need to update your ndk version in the android/app/build.gradle file also.
 
-**Step 2**:
-Update the main method:
+**Step 2: Update the main method**
 
 ```dart
 void main() async {
@@ -231,8 +230,13 @@ final tasks = tasksProvider.tasks;
 
 This allows us to show a loader(circular progress indicator) when the tasks have not been loaded yet. When the tasks are loaded, TasksScreen gets notified and show the tasks.
 
-**Conclusion**
+### 🎉 Congratulations!
 
-We are done with this step. Our todo list app now persists tasks on the local data. In the following steps, we will learn basics of Firebase by adding authentication flow and storing the tasks on firebase storage as well.
+You've just built a fully functional Todo App with local SQLite storage in Flutter!
+You've learned how to create, update, delete, and persist tasks — all right on the device.
 
-👉 [View Step 04 Code Commit](commit_link_here_later)
+Feel free to customize it further, or continue building by adding features like task reminders, search, or even dark mode.
+
+**Happy coding! 🚀**
+
+👉 [View Step 04 Code Commit](https://github.com/Arfeen-Yousuf/todo_list_tutorial/commit/545c40b46a134781abe0ae07394a4a232106fb4f)

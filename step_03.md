@@ -4,9 +4,9 @@ This step refactors the code to use **providers** in order to separate UI logic 
 
 ChangeNotifier is a class in Flutter's Flutter Foundation library that helps manage state in your app. It **notifies listeners** (usually UI components) whenever there’s a **change in the data** they depend on. By extending ChangeNotifier in your custom class and calling **notifyListeners()** when your data changes, you can automatically update your UI without manually managing **setState** calls across multiple widgets. It's a simple yet powerful tool for managing state in smaller apps.
 
-**Steps:**
+### Steps:
 
-**1)** Create a file **lib/providers/tasks_provider.dart** and place the following contents:
+**Step 1:** Create a file **lib/providers/tasks_provider.dart** and place the following contents:
 
 ```dart
 import 'dart:collection';
@@ -25,7 +25,9 @@ class TasksProviders extends ChangeNotifier {
 }
 ```
 
-**2)** Note that our state has now moved to TasksProvider class. Next add these methods to the TasksProvider class that allow us to mutate the state.
+**Step 2: Update TasksProviders**
+
+Note that our state has now moved to TasksProvider class. Next add these methods to the TasksProviders class that allow us to mutate the state.
 
 ```dart
 void removeTaskAt(int index) {
@@ -52,13 +54,17 @@ void upateTask({
 }
 ```
 
-**3)** Add provider package by running the following command in the project root folder.
+**Step 3: Add Dependencies**
+
+Add provider package by running the following command in the project root folder.
 
 ```bash
 flutter pub add provider
 ```
 
-**4)** Change the home argument in MyApp widget in main file to
+**Step 4: Update MyApp**
+
+Change the home argument in MyApp widget in main file to
 
 ```dart
 home: ChangeNotifierProvider(
@@ -67,7 +73,9 @@ home: ChangeNotifierProvider(
 ),
 ```
 
-**5)** Remove the \_tasks field from the \_TasksScreenState class and convert the TasksScreen back to a stateless. We will fix the errors that arise.
+**Step 5: Update TasksScreen**
+
+Remove the \_tasks field from the \_TasksScreenState class and convert the TasksScreen back to a stateless. We will fix the errors that arise.
 
 **Hint:** Replace
 
@@ -93,7 +101,9 @@ class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
 ```
 
-**6)** Add the following line to the start of TaskScreen build method
+**Step 6: Start listening to tasks**
+
+Add the following line to the start of TaskScreen build method
 
 ```dart
 final tasks = context.watch<TasksProviders>().tasks;
@@ -101,7 +111,7 @@ final tasks = context.watch<TasksProviders>().tasks;
 
 and replace change all \_tasks to tasks. context.watch registers the widget as a listener to the tasks changes.
 
-**7)** Refactoring the TasksScreen
+**Step 7: Refact the TasksScreen**
 
 Change
 
@@ -222,7 +232,11 @@ Future<(String title, String description)?> _showTaskDialog(
 
 Remember to pass the context as argument where the method is called.
 
-**8)** Now run the app and it should work same as before. But now with a cleaner code structure and seperation of concerns.
+**Step 8: Run the App**
+
+Now run the app and it should work same as before. But now with a cleaner code structure and seperation of concerns.
+
+**What's Next**
 
 We are done with this step. In the following steps, we will add a local databse using sqflite package to persist the tasks.
 

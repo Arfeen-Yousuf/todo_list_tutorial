@@ -1,8 +1,12 @@
-This step adds **interactivity** and task model to our app.
+### Interactivity
+
+This step adds interactivity and a task model to our app.
 
 ### Steps:
 
-**1)** Create a file **lib/screens/tasks_screen.dart** and place the following contents:
+**Step 1: Create Task model**
+
+Create a file **lib/models/task_model.dart** and place the following contents:
 
 ```dart
 import 'package:flutter/foundation.dart';
@@ -39,7 +43,9 @@ class TaskModel {
 
 Note that the model class is marked as @immutable to prevent accidental manipulation.
 
-**2)** Since user will be creating/editing tasks on the tasks screen, convert the **TasksScreen** widget to a stateful widget.
+**Step 2: Make TasksScreen stateful**
+
+Since user will be creating/editing tasks on the tasks screen, convert the **TasksScreen** widget to a stateful widget.
 ![image](https://github.com/user-attachments/assets/2bb749d7-b264-4818-bed9-45e304fa7233)
 
 and add a field to the **\_TasksScreenState** class to hold the tasks.
@@ -51,7 +57,9 @@ final List<TaskModel> _tasks = [
 ];
 ```
 
-**3)** Replace the body argument inside the build method with the following code
+**Step 3: Update TasksScreen**
+
+Replace the body argument inside the build method with the following code
 
 ```dart
 body: SafeArea(
@@ -92,7 +100,9 @@ body: SafeArea(
 
 Now the user can easily delete a task and update its completion status but can not yet create new task or update a task. We fix this in the next step
 
-**4)** Add a private method inside the state class to show a add/edit task dialog when a user wants to create or edit a task
+**Step 4: Update \_TasksScreenState**
+
+Add a private method inside the state class to show a add/edit task dialog when a user wants to create or edit a task
 
 ```dart
 /// Shows a dialog to enter a task title and description
@@ -147,7 +157,9 @@ Future<(String title, String description)?> _showTaskDialog({
 }
 ```
 
-**5)** Add a floating action button inside the scaffold to add a task
+**Step 5: Add a Floating Action Button**
+
+Add a floating action button inside the scaffold that asks user to add a task
 
 ```dart
 body: ...,
@@ -176,11 +188,13 @@ floatingActionButton: FloatingActionButton(
 Now the user can add a task.
 ![image](https://github.com/user-attachments/assets/b3609699-da8c-456c-b8cc-c5643c5e3afa)
 
-**6)** Add onTap callback to out task ListTile to enable user to update a task
+**Step 6: Update ListTile in the body**
+
+Add onTap callback to out task ListTile to enable user to update a task
 
 ```dart
 ListTile(
-  leading: .../
+  leading: ...,
   title ...,
   subtitle: ...,
   onTap: () async {
@@ -209,6 +223,8 @@ ListTile(
 ```
 
 ![Screenshot from 2025-04-12 18-35-14](https://github.com/user-attachments/assets/c84dc67e-cb17-4710-a72f-c6f99815c2dd)
+
+**What's Next**
 
 We are done with this step. In the following steps, we refactor our code and use provider to seperate our UI Logic from Business Logic
 
